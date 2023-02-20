@@ -1,9 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap");
 
 :root {
-  --color-red: #7f1d1d;
-  --color-cyan: #06b6d4;
-  --color-lime: #84cc16;
+  --color-red: #be185d;
+  --color-pink: #fb7185;
+  --color-rose: #f9a8d4;
 }
 
 * > * {
@@ -20,11 +20,11 @@
 .bg-red {
   background-color: var(--color-red);
 }
-.bg-cyan {
-  background-color: var(--color-cyan);
+.bg-pink {
+  background-color: var(--color-pink);
 }
-.bg-lime {
-  background-color: var(--color-lime);
+.bg-rose {
+  background-color: var(--color-rose);
 }
 
 h3.title {
@@ -34,4 +34,8 @@ h3.title {
   top: 40%;
   margin-left: auto;
   margin-right: auto;
+}
+
+.form-input {
+  @apply mt-1 block w-full py-2 px-3 border border-gray-200 bg-white rounded-md focus:outline-none focus:ring-indigo-500 sm:text-sm;
 }

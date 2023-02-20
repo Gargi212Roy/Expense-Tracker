@@ -1,7 +1,7 @@
 import React from "react";
 import { Doughnut } from "react-chartjs-2";
 import { Chart, ArcElement } from "chart.js";
-
+import Labels from "./Labels";
 Chart.register(ArcElement);
 
 const config = {
@@ -9,11 +9,7 @@ const config = {
     datasets: [
       {
         data: [300, 50, 100],
-        backgroundColor: [
-          "rgb(255, 99, 132)",
-          "rgb(54, 162, 235)",
-          "rgb(255, 205, 86)",
-        ],
+        backgroundColor: ["#be185d", "#fb7185", "#f9a8d4"],
         hoverOffset: 4,
         borderRadius: 30,
         spacing: 10,
@@ -37,7 +33,9 @@ function Graph() {
             <span className="block text-3xl text-emerald-400">${0}</span>
           </h3>
         </div>
-        <div className="flex flex-col py-10 gap-4">{/* Labels */}</div>
+        <div className="flex flex-col py-10 gap-4">
+          <Labels />
+        </div>
       </div>
     </div>
   );
