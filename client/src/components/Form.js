@@ -2,7 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 
 function Form() {
-  const { register, handlesubmit, resetField } = useForm();
+  const { register, handleSubmit, resetField } = useForm();
   // register--> to register input text boxes, handleSubmit--> submit the data to the form, resetField--> reset the value of the input text boxes
 
   const onSubmit = (data) => {
@@ -12,7 +12,7 @@ function Form() {
   return (
     <div className="form max-w-sm mx-auto w-96">
       <h1 className="font-bold pb-4 text-xl">Transaction</h1>
-      <form id="form" onSubmit={handlesubmit(onSubmit)}>
+      <form id="form" onSubmit={handleSubmit(onSubmit)}>
         <div className="grid gap-4">
           <div className="input-group">
             <input
