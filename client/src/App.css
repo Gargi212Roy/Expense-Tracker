@@ -36,6 +36,32 @@ h3.title {
   margin-right: auto;
 }
 
+.in-ex-container {
+  background-color: #fff;
+  box-shadow: var(--box-shadow);
+  padding: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  margin: 35px 0;
+}
+
+.income {
+  color: #be185d;
+}
+
+.expense {
+  color: aqua;
+}
+
+.divider {
+  display: inline-block;
+  border-left: 1px solid #ccc;
+  margin: 0 10px;
+  height: 50px;
+}
+
 .form-input {
   @apply mt-1 block w-full py-2 px-3 border border-gray-200 bg-white rounded-md focus:outline-none focus:ring-indigo-500 sm:text-sm;
 }

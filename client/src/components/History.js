@@ -18,7 +18,7 @@ const obj = [
 
 function History() {
   return (
-    <div className="flex flex-col py-6 gap-3">
+    <div className="flex flex-col py-1 gap-3">
       <h1 className="py-4 text-md font-bold text-xl">History</h1>
       {obj.map((v, i) => (
         <Transaction key={i} category={v} />

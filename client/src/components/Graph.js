@@ -2,6 +2,7 @@ import React from "react";
 import { Doughnut } from "react-chartjs-2";
 import { Chart, ArcElement } from "chart.js";
 import Labels from "./Labels";
+import Balance from "./Balance";
 Chart.register(ArcElement);
 
 const config = {
@@ -28,10 +29,7 @@ function Graph() {
         <div className="chart relative">
           <Doughnut {...config}></Doughnut>
           {/* initializing 2 properties with the same name ---> data property and option property */}
-          <h3 className="mb-4 font-bold title">
-            Total Expense
-            <span className="block text-3xl text-emerald-400">${0}</span>
-          </h3>
+          <Balance />
         </div>
         <div className="flex flex-col py-10 gap-4">
           <Labels />
