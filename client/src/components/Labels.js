@@ -1,45 +1,74 @@
 import React from "react";
-
-const obj = [
-  {
-    type: "Savings",
-    color: "#be185d",
-    percent: 45,
-  },
-  {
-    type: "Investment",
-    color: "#f9a8d4",
-    percent: 20,
-  },
-  {
-    type: "Expense",
-    color: "#fb7185",
-    percent: 10,
-  },
-];
+import { useAppContext, TYPES } from "../context/GlobalState";
 
 function Labels() {
+  const {
+    state: { transactions, colors },
+  } = useAppContext();
+
+  const income = transactions.reduce(
+    (currSum, transaction) =>
+      transaction.type === "INCOME"
+        ? currSum + parseInt(transaction.amount.toString())
+        : currSum,
+    0
+  );
+  const investment = transactions.reduce(
+    (currSum, transaction) =>
+      transaction.type === "INVESTMENT"
+        ? currSum + parseInt(transaction.amount.toString())
+        : currSum,
+    0
+  );
+  const expense = transactions.reduce(
+    (currSum, transaction) =>
+      transaction.type === "EXPENSE"
+        ? currSum + parseInt(transaction.amount.toString())
+        : currSum,
+    0
+  );
+
+  const balance = income - investment - expense;
+
+  const calculatePercentage = (type) => {
+    switch (type) {
+      case TYPES.INCOME:
+        return ((balance * 1.0) / (income * 1.0)) * 100.0;
+      case TYPES.INVESTMENT:
+        return ((investment * 1.0) / (income * 1.0)) * 100.0;
+      case TYPES.EXPENSE:
+        return ((expense * 1.0) / (income * 1.0)) * 100.0;
+      default:
+        return 0;
+    }
+  };
+
   return (
     <>
-      {obj.map((v, i) => (
-        <LabelComponent key={i} data={v} />
+      {Object.keys(TYPES).map((type, i) => (
+        <LabelComponent
+          key={i}
+          type={type === TYPES.INCOME ? "BALANCE" : type}
+          percentage={calculatePercentage(type).toFixed(2)}
+          color={colors[type]}
+        />
       ))}
     </>
   );
 }
 
-function LabelComponent({ data }) {
-  if (!data) return <></>;
+function LabelComponent({ type, percentage, color }) {
+  if (!type) return <></>;
   return (
     <div className="labels flex justify-between">
       <div className="flex gap-2">
         <div
           className="w-2 h-2 rounded py-3"
-          style={{ background: data.color ?? "#fb7185" }}
+          style={{ background: color ?? "#fb7185" }}
         ></div>
-        <h3 className="text-md">{data.type ?? ""}</h3>
+        <h3 className="text-md">{type ?? ""}</h3>
       </div>
-      <h3 className="font-bold">{data.percent ?? 0}%</h3>
+      <h3 className="font-bold">{percentage ?? 0}%</h3>
     </div>
   );
 }

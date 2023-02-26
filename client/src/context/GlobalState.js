@@ -1,18 +1,29 @@
-import React, { createContext, useReducer } from "react";
+import React, { createContext, useContext, useReducer } from "react";
 import AppReducer from "./AppReducer";
+
+export const TYPES = {
+  INVESTMENT: "INVESTMENT",
+  INCOME: "INCOME",
+  EXPENSE: "EXPENSE",
+};
 
 // initial State
 const initialState = {
   transactions: [
-    { id: 1, text: "Books", amount: -500 },
-    { id: 1, text: "Salary", amount: 55500 },
-    { id: 1, text: "Chocolate", amount: -50 },
-    { id: 1, text: "Check Return", amount: 5500 },
+    { id: 1, text: "Books", amount: 500, type: TYPES.EXPENSE },
+    { id: 2, text: "Salary", amount: 55500, type: TYPES.INCOME },
+    { id: 3, text: "Chocolate", amount: 50, type: TYPES.EXPENSE },
+    { id: 4, text: "Stocks", amount: 5500, type: TYPES.INVESTMENT },
   ],
+  colors: {
+    INVESTMENT: "#f9a8d4",
+    INCOME: "#be185d",
+    EXPENSE: "#fb7185",
+  },
 };
 
 // create Context
-export const GlobalContext = createContext(initialState);
+export const GlobalContext = createContext();
 
 // Provider
 export const GlobalProvider = ({ children }) => {
@@ -20,10 +31,15 @@ export const GlobalProvider = ({ children }) => {
   return (
     <GlobalContext.Provider
       value={{
-        transactions: state.transactions,
+        state,
+        dispatch,
       }}
     >
       {children}
     </GlobalContext.Provider>
   );
+};
+
+export const useAppContext = () => {
+  return useContext(GlobalContext);
 };
