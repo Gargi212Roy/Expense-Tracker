@@ -10,7 +10,7 @@ const config = {
     datasets: [
       {
         data: [300, 50, 100],
-        backgroundColor: ["#be185d", "#fb7185", "#f9a8d4"],
+        backgroundColor: ["#713f12", "#581c87", "#facc15"],
         hoverOffset: 4,
         borderRadius: 30,
         spacing: 10,

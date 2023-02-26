@@ -16,9 +16,9 @@ const initialState = {
     { id: 4, text: "Stocks", amount: 5500, type: TYPES.INVESTMENT },
   ],
   colors: {
-    INVESTMENT: "#f9a8d4",
-    INCOME: "#be185d",
-    EXPENSE: "#fb7185",
+    INVESTMENT: "#facc15",
+    INCOME: "#713f12",
+    EXPENSE: "#581c87",
   },
 };
 

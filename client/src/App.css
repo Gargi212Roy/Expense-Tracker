@@ -52,7 +52,11 @@ h3.title {
 }
 
 .expense {
-  color: aqua;
+  color: #831843;
+}
+
+.investment {
+  color: #701a75;
 }
 
 .divider {

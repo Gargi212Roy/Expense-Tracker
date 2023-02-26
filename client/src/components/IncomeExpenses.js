@@ -30,7 +30,6 @@ function IncomeExpenses() {
 
   return (
     <>
-      <div>{income - investment - expense}</div>
       <div className="in-ex-container">
         <div>
           <h4>Income</h4>
