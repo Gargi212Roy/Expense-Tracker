@@ -50,7 +50,7 @@ function Labels() {
           key={i}
           type={type === TYPES.INCOME ? "BALANCE" : type}
           percentage={calculatePercentage(type).toFixed(2)}
-          color={colors[type]}
+          color={type === TYPES.INCOME ? colors.BALANCE : colors[type]}
         />
       ))}
     </>

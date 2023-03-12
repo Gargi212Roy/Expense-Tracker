@@ -47,18 +47,6 @@ h3.title {
   margin: 35px 0;
 }
 
-.income {
-  color: #be185d;
-}
-
-.expense {
-  color: #831843;
-}
-
-.investment {
-  color: #701a75;
-}
-
 .divider {
   display: inline-block;
   border-left: 1px solid #ccc;

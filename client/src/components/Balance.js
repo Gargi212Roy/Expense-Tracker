@@ -34,7 +34,7 @@ function Balance() {
     <>
       <h3 className="mb-4 font-bold text-2xl title">
         Total Balance
-        <span className="block text-xl text-lime-900">Rs {balance}</span>
+        <span className="block text-xl text-amber-900">Rs {balance}</span>
       </h3>
     </>
   );
