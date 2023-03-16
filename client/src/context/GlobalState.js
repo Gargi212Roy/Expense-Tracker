@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useReducer } from "react";
+import React, { createContext, useContext, useEffect, useReducer } from "react";
 import AppReducer from "./AppReducer";
 
 export const TYPES = {
@@ -7,15 +7,25 @@ export const TYPES = {
   EXPENSE: "EXPENSE",
 };
 
+const getLocalStorageTransactions = () => {
+  let newTransaction = localStorage.getItem("data");
+  if (newTransaction === []) {
+    return [];
+  } else {
+    return JSON.parse(newTransaction);
+  }
+};
+
 // initial State
 const initialState = {
-  transactions: [
-    { id: 2, text: "Salary", amount: 55500, type: TYPES.INCOME },
-    { id: 1, text: "Books", amount: 2500, type: TYPES.EXPENSE },
-    { id: 5, text: "Lottery", amount: 5500, type: TYPES.INVESTMENT },
-    { id: 3, text: "Shopping", amount: 10000, type: TYPES.EXPENSE },
-    { id: 4, text: "Stocks", amount: 9500, type: TYPES.INVESTMENT },
-  ],
+  transactions: getLocalStorageTransactions(),
+  // transactions: [
+  //   { id: 2, text: "Salary", amount: 55500, type: TYPES.INCOME },
+  //   { id: 1, text: "Books", amount: 2500, type: TYPES.EXPENSE },
+  //   { id: 5, text: "Lottery", amount: 5500, type: TYPES.INVESTMENT },
+  //   { id: 3, text: "Shopping", amount: 10000, type: TYPES.EXPENSE },
+  //   { id: 4, text: "Stocks", amount: 9500, type: TYPES.INVESTMENT },
+  // ],
   colors: {
     INVESTMENT: "#facc15",
     INCOME: "#b80c0c",
@@ -30,6 +40,12 @@ export const GlobalContext = createContext();
 // Provider
 export const GlobalProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
+
+  useEffect(() => {
+    localStorage.setItem("data", JSON.stringify(state.transactions));
+    localStorage.setItem("datas", JSON.stringify(state.colors));
+  }, [state.transactions]);
+
   return (
     <GlobalContext.Provider
       value={{

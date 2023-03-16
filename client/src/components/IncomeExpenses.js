@@ -33,17 +33,17 @@ function IncomeExpenses() {
       <div className="in-ex-container">
         <div>
           <h4>Income</h4>
-          <p className="income">{income}</p>
+          <p className="income text-red-600">{income}</p>
         </div>
         <span className="divider"></span>
         <div>
           <h4>Investment</h4>
-          <p className="investment">{investment}</p>
+          <p className="investment text-yellow-400">{investment}</p>
         </div>
-        <span className="divider"></span>
+        <span className="divider "></span>
         <div>
           <h4>Total Expense</h4>
-          <p className="expense">{expense}</p>
+          <p className="expense text-pink-800">{expense}</p>
         </div>
       </div>
     </>

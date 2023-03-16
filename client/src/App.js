@@ -3,8 +3,6 @@ import Header from "./components/Header";
 import Graph from "./components/Graph";
 import Form from "./components/Form";
 import { GlobalProvider } from "./context/GlobalState";
-import IncomeExpenses from "./components/IncomeExpenses";
-import History from "./components/History";
 
 function App() {
   return (
