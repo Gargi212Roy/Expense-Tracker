@@ -14,6 +14,9 @@ const appReducer = (state, action) => {
           (transaction) => transaction.id !== action.payload
         ),
       };
+    case "INITIAL_STATE":
+      return action.payload;
+
     default:
       return state;
   }

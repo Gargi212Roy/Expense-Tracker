@@ -18,7 +18,7 @@ const getLocalStorageTransactions = () => {
 
 // initial State
 const initialState = {
-  transactions: getLocalStorageTransactions(),
+  transactions: [],
   // transactions: [
   //   { id: 2, text: "Salary", amount: 55500, type: TYPES.INCOME },
   //   { id: 1, text: "Books", amount: 2500, type: TYPES.EXPENSE },
@@ -42,9 +42,22 @@ export const GlobalProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
 
   useEffect(() => {
-    localStorage.setItem("data", JSON.stringify(state.transactions));
-    localStorage.setItem("datas", JSON.stringify(state.colors));
-  }, [state.transactions]);
+    console.log("Hello");
+    let data = {};
+    if (localStorage.getItem("data")) {
+      data = JSON.parse(localStorage.getItem("data"));
+    }
+    dispatch({
+      type: "INITIAL_STATE",
+      payload: data,
+    });
+    console.log({ data });
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("data", JSON.stringify(state));
+    console.log(state);
+  }, [state]);
 
   return (
     <GlobalContext.Provider
